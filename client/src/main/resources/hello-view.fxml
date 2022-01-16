@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controller">
+   <children>
+      <AnchorPane layoutY="100.0" prefHeight="297.0" prefWidth="701.0" style="-fx-background-color: #FAFAFA;" styleClass="backgroundColor" stylesheets="@css/style.css">
+         <children>
+            <Button fx:id="sendButton" layoutX="646.0" layoutY="272.0" onAction="#clickBtnSendText" mnemonicParsing="false" prefHeight="39.0" prefWidth="55.0" style="-fx-background-color: white;" text="SEND" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Button>
+            <TextField fx:id="textField" layoutY="272.0" onAction="#clickBtnSendText" prefHeight="38.0" prefWidth="646.0" promptText="Введите сообщение" style="-fx-background-color: #FAFAFA; -fx-border-color: silver;">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <TextArea fx:id="chatTextField" cache="true" editable="false" layoutX="1.0" prefHeight="273.0" prefWidth="700.0" style="-fx-border-color: silver;" styleClass="buttonWithImage" stylesheets="@../../../../client/src/main/resources/css/style.css">
+               <font>
+                  <Font size="16.0" />
+               </font></TextArea>
+         </children>
+      </AnchorPane>
+      <Label layoutX="14.0" prefHeight="58.0" prefWidth="275.0" text="MyChat" textFill="WHITE">
+         <font>
+            <Font name="Segoe Script Bold" size="52.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@css/style.css" />
+   </stylesheets>
+</AnchorPane>

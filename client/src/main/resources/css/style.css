@@ -1,0 +1,10 @@
+.backgroundColor{
+  -fx-background-color: linear-gradient(to left, #ccffff 0%, #ffcccc 100%);
+}
+
+.backgroundBody{
+  -fx-background-image: url("https://cdn-icons-png.flaticon.com/512/736/736161.png");
+}
+.buttonWithImage {
+    -fx-graphic: url("ready.png");
+}
