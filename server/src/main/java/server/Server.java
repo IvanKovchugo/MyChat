@@ -48,18 +48,24 @@ public class Server {
     }
 
     public void broadcastMessage(ClientHandler sender, String msg) {
-        String message = String.format("[ %s ]: %s", sender.getNickname(), msg);
+        String message = String.format("[%s]: %s", sender.getNickname(), msg);
         for (ClientHandler c : clients) {
             c.sendMassage(message);
         }
     }
 
     public void privateMessage(ClientHandler sender, String toWhom, String msg) {
-        String privateMessageformat = String.format("[ %s ] [ s% ] : %s", sender.getNickname(), toWhom ,msg );
-        toWhom = sender.getNickname();
+        String message = String.format("from: [%s] to: [%s]: %s", sender.getNickname(), toWhom, msg);
         for (ClientHandler c : clients) {
-            c.sendMassage(privateMessageformat);
+            if (c.getNickname().equals(toWhom)) {
+                c.sendMassage(message);
+                if (!sender.getNickname().equals(toWhom)) {
+                    sender.sendMassage(message);
+                }
+                return;
+            }
         }
+        sender.sendMassage("not found user: " + toWhom);
     }
 
     public AuthServise getAuthService() {

@@ -134,11 +134,7 @@ public class Controller implements Initializable {
                             setAuthenticated(false);
                             break;
                         }
-                        if (str.startsWith("/w")) {
-                            nickname = str.split(" ")[1];
-                            toWhom = str.split(" ")[2];
-
-                        }
+                        chatTextField.appendText(str + "\n");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
