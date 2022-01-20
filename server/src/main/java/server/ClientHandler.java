@@ -34,7 +34,7 @@ public class ClientHandler {
                         }
                         if (str.startsWith("/auth")) {
                             String[] token = str.split(" ", 3);
-                            if (token.length<3) {
+                            if (token.length < 3) {
                                 continue;
                             }
                             String newNick = server.getAuthService()
@@ -55,19 +55,23 @@ public class ClientHandler {
                     while (authenticated) {
                         String str = in.readUTF();
 
-                        if (str.equals("/end")) {
-                            sendMassage("/end");
-                            break;
+                        if (str.startsWith("/")) {
+                            if (str.equals("/end")) {
+                                sendMassage("/end");
+                                break;
+                            }
+                            if (str.startsWith("/w")) {
+                                String[] privatToken = str.split(" ", 3);
+                                if (privatToken.length < 3) {
+                                    continue;
+                                }
+                                server.privateMessage(this, privatToken[1], privatToken[2]);
+                            }
+                        } else {
+                            server.broadcastMessage(this, str);
                         }
-                        if (str.startsWith("/w")) {
-                        String[] privatToken = str.split(" ", 3);
-                        if (privatToken.length < 3){
-                            continue;
-                        }
-                        server.privateMessage(this, nickname, str);
-                        }
-                        server.broadcastMessage(this, str);
                     }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } finally {
@@ -91,7 +95,7 @@ public class ClientHandler {
 
     }
 
-    public void sendMassage(String massage){
+    public void sendMassage(String massage) {
         try {
             out.writeUTF(massage);
         } catch (IOException e) {
