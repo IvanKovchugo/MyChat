@@ -13,10 +13,11 @@ public class Server {
     private final int PORT = 8253;
 
     private List<ClientHandler> clients;
+    private AuthServise authServise;
 
     public Server() {
         clients = new CopyOnWriteArrayList<>();
-
+        authServise = new SimpleAuthyService();
         try {
             server = new ServerSocket(PORT);
             System.out.println("Server have been started!");
@@ -24,7 +25,7 @@ public class Server {
             while (true) {
                 socket = server.accept();
                 System.out.println("Client connected!" + socket.getRemoteSocketAddress());
-                clients.add(new ClientHandler(this, socket));
+                new ClientHandler(this, socket);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -36,11 +37,32 @@ public class Server {
                 e.printStackTrace();
             }
         }
-
     }
-    public  void  broadcastMessage(String message) {
+
+    public void subscribe(ClientHandler clientHandler) {
+        clients.add(clientHandler);
+    }
+
+    public void removeClient (ClientHandler clientHandler) {
+        clients.remove(clientHandler);
+    }
+
+    public void broadcastMessage(ClientHandler sender, String msg) {
+        String message = String.format("[ %s ]: %s", sender.getNickname(), msg);
         for (ClientHandler c : clients) {
             c.sendMassage(message);
         }
+    }
+
+    public void privateMessage(ClientHandler sender, String toWhom, String msg) {
+        String privateMessageformat = String.format("[ %s ] [ s% ] : %s", sender.getNickname(), toWhom ,msg );
+        toWhom = sender.getNickname();
+        for (ClientHandler c : clients) {
+            c.sendMassage(privateMessageformat);
+        }
+    }
+
+    public AuthServise getAuthService() {
+        return authServise;
     }
 }
