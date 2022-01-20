@@ -1,0 +1,7 @@
+.backgroundColor{
+  -fx-background-color: linear-gradient(to left, #ccffff 35%, #ffcccc 85%);
+}
+
+.backgroundLog {
+ -fx-background-color: linear-gradient(to right, #ccffff 0%, #ffffff 85%);
+ }
