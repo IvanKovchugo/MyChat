@@ -5,3 +5,7 @@
 .backgroundLog {
  -fx-background-color: linear-gradient(to right, #ccffff 0%, #ffffff 85%);
  }
+
+ .backgroundBtn {
+ -fx-background-color: linear-gradient(to left, #2DE3E3 0%, #4DFFFF 50%);
+ }

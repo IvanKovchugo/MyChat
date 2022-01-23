@@ -2,9 +2,8 @@ package server;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SplittableRandom;
 
-public class SimpleAuthyService implements AuthServise{
+public class SimpleAuthyService implements AuthServise {
     private class UserData {
         String login;
         String password;
@@ -16,7 +15,8 @@ public class SimpleAuthyService implements AuthServise{
             this.nickname = nickname;
         }
     }
-    private List <UserData> users;
+
+    private List<UserData> users;
 
     public SimpleAuthyService() {
         this.users = new ArrayList<>();
@@ -32,12 +32,22 @@ public class SimpleAuthyService implements AuthServise{
 
     @Override
     public String getNicknameByLoginAndPassword(String login, String password) {
-        for (UserData user : users){
-          if (user.login.equals(login) && user.password.equals(password)) {
-              return user.nickname;
-          }
+        for (UserData user : users) {
+            if (user.login.equals(login) && user.password.equals(password)) {
+                return user.nickname;
+            }
         }
-
         return null;
     }
-}
+
+    @Override
+    public boolean registration(String login, String password, String nickname) {
+        for (UserData user : users) {
+            if (user.login.equals(login) || user.nickname.equals(nickname)) {
+                return false;
+            }
+        }
+        users.add(new UserData(login, password, nickname));
+        return true;
+        }
+    }

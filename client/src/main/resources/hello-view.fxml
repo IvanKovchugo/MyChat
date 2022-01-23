@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="700.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="700.0" styleClass="backgroundColor" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.Controller">
    <children>
-      <AnchorPane layoutY="100.0" prefHeight="297.0" prefWidth="701.0" style="-fx-background-color: #FAFAFA;" styleClass="backgroundColor" stylesheets="@css/style.css" visible="false" managed="false" fx:id="anchorMsg">
+      <AnchorPane fx:id="authPanel" layoutY="100.0" managed="true" prefHeight="311.0" prefWidth="700.0" styleClass="backgroundLog" stylesheets="@css/style.css">
          <children>
-            <Button fx:id="sendButton" layoutX="646.0" layoutY="272.0" mnemonicParsing="false" onAction="#clickBtnSendText" prefHeight="39.0" prefWidth="55.0" style="-fx-background-color: white;" text="SEND" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0">
+            <Button layoutX="322.0" layoutY="121.0" mnemonicParsing="false" onAction="#clickBtnAuth" text="Sign Up" />
+            <PasswordField fx:id="passwordField" layoutX="380.0" layoutY="61.0" promptText="Password" />
+            <TextField fx:id="loginField" layoutX="176.0" layoutY="61.0" promptText="Login" />
+            <Button fx:id="btnReg" layoutX="321.0" layoutY="156.0" mnemonicParsing="false" onAction="#btnRegClick" styleClass="backgroundLog" text="Register!" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorMsg" layoutY="100.0" managed="false" prefHeight="297.0" prefWidth="701.0" style="-fx-background-color: #FAFAFA;" styleClass="backgroundColor" stylesheets="@css/style.css" visible="false">
+         <children>
+            <Button fx:id="sendButton" layoutX="645.0" layoutY="273.0" mnemonicParsing="false" onAction="#clickBtnSendText" prefHeight="38.0" prefWidth="55.0" style="-fx-background-color: white;" text="SEND" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
-               </font></Button>
+               </font>
+            </Button>
             <TextField fx:id="textField" layoutY="272.0" onAction="#clickBtnSendText" prefHeight="39.0" prefWidth="646.0" promptText="Введите сообщение" style="-fx-background-color: #FAFAFA; -fx-border-color: silver;">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <TextArea fx:id="chatTextField" cache="true" editable="false" layoutX="1.0" prefHeight="273.0" prefWidth="700.0" style="-fx-border-color: silver;" styleClass="buttonWithImage" stylesheets="@../../../../client/src/main/resources/css/style.css">
+            <TextArea fx:id="chatTextField" cache="true" editable="false" layoutX="175.0" prefHeight="273.0" prefWidth="526.0" style="-fx-border-color: silver;" styleClass="buttonWithImage" stylesheets="@../../../../client/src/main/resources/css/style.css">
                <font>
                   <Font size="16.0" />
                </font></TextArea>
+            <AnchorPane fx:id="anchorForList" prefHeight="273.0" prefWidth="175.0" visible="false">
+               <children>
+                  <TextArea fx:id="textForList" editable="false" prefHeight="273.0" prefWidth="176.0" />
+                  <ListView fx:id="clientList" managed="false" onMouseReleased="#clickBtnClientList" prefHeight="273.0" prefWidth="176.0" visible="false" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <Label fx:id="Label" layoutX="14.0" prefHeight="58.0" prefWidth="275.0" text="MyChat" textFill="WHITE">
@@ -32,13 +43,6 @@
             <Font name="Segoe Script Bold" size="52.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="102.0" prefHeight="311.0" prefWidth="701.0" styleClass="backgroundLog" stylesheets="@css/style.css" fx:id="authPanel" visible="true" managed="true">
-         <children>
-            <Button layoutX="322.0" layoutY="121.0" mnemonicParsing="false" onAction="#clickBtnAuth" text="Sign Up" />
-            <PasswordField fx:id="passwordField" layoutX="380.0" layoutY="61.0" promptText="Password" />
-            <TextField fx:id="loginField" layoutX="176.0" layoutY="61.0" promptText="Login" />
-         </children>
-      </AnchorPane>
    </children>
    <stylesheets>
       <URL value="@css/style.css" />
