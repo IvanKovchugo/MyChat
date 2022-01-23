@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="411.0" prefWidth="700.0" styleClass="backgroundColor" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.RegController">
+   <children>
+      <AnchorPane layoutY="100.0" prefHeight="311.0" prefWidth="700.0" styleClass="backgroundLog" stylesheets="@css/style.css">
+         <children>
+            <Button fx:id="cBtnReg" layoutX="287.0" layoutY="118.0" mnemonicParsing="false" onAction="#clickBtnReg"  text="Confirm registration!" />
+            <TextField fx:id="regLoginField" layoutX="140.0" layoutY="63.0" promptText="Enter Login" />
+            <TextField fx:id="regNicknameField" layoutX="140.0" layoutY="26.0" promptText="Enter Nickname" />
+            <PasswordField fx:id="regPasswordField" layoutX="415.0" layoutY="63.0" promptText="Enter Password" />
+            <TextArea fx:id="textAreaRegistration" layoutX="132.0" layoutY="156.0" prefHeight="112.0" prefWidth="437.0" editable="false"/>
+         </children>
+      </AnchorPane>
+      <Label fx:id="Label" layoutX="14.0" layoutY="-8.0" prefHeight="58.0" prefWidth="275.0" text="MyChat" textFill="WHITE">
+         <font>
+            <Font name="Segoe Script Bold" size="52.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
