@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.sql.SQLException;
 
 public class ClientHandler {
     private Server server;
@@ -49,7 +50,6 @@ public class ClientHandler {
                                     .getNicknameByLoginAndPassword(token[1], token[2]);
                             login = token[1];
                             if (newNick != null) {
-
                                 if (!server.isLoginAuthenticated(login)) {
                                     authenticated = true;
                                     nickname = newNick;
@@ -104,6 +104,8 @@ public class ClientHandler {
                     sendMassage(ServiceMessages.END);
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 } finally {
                     System.out.println("Client disconnected");
                     server.removeClient(this);

@@ -170,6 +170,11 @@ public class Controller implements Initializable {
                                 });
                             }
 
+                            if (str.startsWith("/nicks ")) {
+                                nickname = str.split(" ")[1];
+                                setTitle(nickname);
+                            }
+
                         } else{
                                 chatTextField.appendText(str + "\n");
                             }
