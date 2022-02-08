@@ -177,6 +177,8 @@ public class Controller implements Initializable {
 
                         } else{
                                 chatTextField.appendText(str + "\n");
+
+                                Last100Messages.writeLine(str);
                             }
                         }
 
