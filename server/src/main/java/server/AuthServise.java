@@ -1,5 +1,7 @@
 package server;
 
+import java.sql.SQLException;
+
 public interface AuthServise {
     /**
      * Получение никнейма по логину и паролю
@@ -12,5 +14,5 @@ public interface AuthServise {
      * при успешной регистрации ( логин и никнейм не заняты ) вернет true
      * иначе вернет false
      * */
-    boolean registration(String login, String password, String nickname);
+    boolean registration(String login, String password, String nickname) throws SQLException;
 }
